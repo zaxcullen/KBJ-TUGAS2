@@ -1,0 +1,78 @@
+ 
+ -------------- demo@LAPTOP-J20GFRLI v5.7.0 (collider)
+--- ***** ----- 
+-- ******* ---- Windows-11-10.0.28000-SP0 2026-11-10 13:44:43
+- *** --- * --- 
+- ** ---------- [config]
+- ** ---------- .> app:         task_chain:0x2027da05be0
+- ** ---------- .> transport:   amqp://guest:**@localhost:5672//
+- ** ---------- .> results:     rpc://
+- *** --- * --- .> concurrency: 12 (solo)
+-- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
+--- ***** ----- 
+ -------------- [queues]
+                .> fan_email        exchange=ex_fanout(fanout) key=celery
+                .> fan_push         exchange=ex_fanout(fanout) key=celery
+                .> fan_sms          exchange=ex_fanout(fanout) key=celery
+                .> top_error        exchange=ex_topic(topic) key=log.error
+                .> top_info         exchange=ex_topic(topic) key=log.info
+                .> wc_error_mana    exchange=ex_wildcard(topic) key=#.error
+                .> wc_error_satu    exchange=ex_wildcard(topic) key=*.error
+                .> wc_semua_log     exchange=ex_wildcard(topic) key=log.#
+
+[tasks]
+  . tasks.generate_report
+  . tasks.process_and_report
+  . tasks.process_data
+  . tasks.tangani_pesan
+
+[2026-11-10 13:44:43,788: INFO/MainProcess] Connected to amqp://guest:**@127.0.0.1:5672//
+[2026-11-10 13:44:43,849: INFO/MainProcess] mingle: searching for neighbors
+[2026-11-10 13:44:44,986: INFO/MainProcess] mingle: all alone
+[2026-11-10 13:44:45,190: INFO/MainProcess] Task tasks.tangani_pesan[cd5ce93b-1442-4388-aea9-887dcc219a16] received
+[2026-11-10 13:44:45,191: WARNING/MainProcess] [demo@LAPTOP-J20GFRLI] exchange=ex_fanout routing_key=apa.saja isi='Promo 11.11 dimulai!'
+[2026-11-10 13:44:45,191: INFO/MainProcess] Task tasks.tangani_pesan[cd5ce93b-1442-4388-aea9-887dcc219a16] succeeded in 0.000571600001421757s: 'Promo 11.11 dimulai!'
+[2026-11-10 13:44:45,194: INFO/MainProcess] Task tasks.tangani_pesan[cd5ce93b-1442-4388-aea9-887dcc219a16] received
+[2026-11-10 13:44:45,195: WARNING/MainProcess] [demo@LAPTOP-J20GFRLI] exchange=ex_fanout routing_key=apa.saja isi='Promo 11.11 dimulai!'
+[2026-11-10 13:44:45,196: INFO/MainProcess] Task tasks.tangani_pesan[cd5ce93b-1442-4388-aea9-887dcc219a16] succeeded in 0.0006202000004122965s: 'Promo 11.11 dimulai!'
+[2026-11-10 13:44:45,196: INFO/MainProcess] Task tasks.tangani_pesan[cd5ce93b-1442-4388-aea9-887dcc219a16] received
+[2026-11-10 13:44:45,197: WARNING/MainProcess] [demo@LAPTOP-J20GFRLI] exchange=ex_fanout routing_key=apa.saja isi='Promo 11.11 dimulai!'
+[2026-11-10 13:44:45,197: INFO/MainProcess] Task tasks.tangani_pesan[cd5ce93b-1442-4388-aea9-887dcc219a16] succeeded in 0.0004343000036897138s: 'Promo 11.11 dimulai!'
+[2026-11-10 13:44:45,198: INFO/MainProcess] Task tasks.tangani_pesan[cad50d54-57c7-45b1-a003-050d958911db] received
+[2026-11-10 13:44:45,199: WARNING/MainProcess] [demo@LAPTOP-J20GFRLI] exchange=ex_topic routing_key=log.error isi='Database down'
+[2026-11-10 13:44:45,199: INFO/MainProcess] Task tasks.tangani_pesan[cad50d54-57c7-45b1-a003-050d958911db] succeeded in 0.0005460000029415824s: 'Database down'
+[2026-11-10 13:44:45,200: INFO/MainProcess] Task tasks.tangani_pesan[ae660439-a1ff-4b90-95ac-f83faef202dc] received
+[2026-11-10 13:44:45,200: WARNING/MainProcess] [demo@LAPTOP-J20GFRLI] exchange=ex_topic routing_key=log.info isi='User login'
+[2026-11-10 13:44:45,200: INFO/MainProcess] Task tasks.tangani_pesan[ae660439-a1ff-4b90-95ac-f83faef202dc] succeeded in 0.00035429999843472615s: 'User login'
+[2026-11-10 13:44:45,201: INFO/MainProcess] Task tasks.tangani_pesan[4478a396-d263-4925-8335-194cc9b027a6] received
+[2026-11-10 13:44:45,201: WARNING/MainProcess] [demo@LAPTOP-J20GFRLI] exchange=ex_wildcard routing_key=log.error isi='Database down'
+[2026-11-10 13:44:45,202: INFO/MainProcess] Task tasks.tangani_pesan[4478a396-d263-4925-8335-194cc9b027a6] succeeded in 0.0002736000024015084s: 'Database down'
+[2026-11-10 13:44:45,202: INFO/MainProcess] Task tasks.tangani_pesan[1f81dcad-5b6c-4a67-99f8-52fb9e86d4f4] received
+[2026-11-10 13:44:45,203: WARNING/MainProcess] [demo@LAPTOP-J20GFRLI] exchange=ex_wildcard routing_key=log.info isi='User login'
+[2026-11-10 13:44:45,203: INFO/MainProcess] Task tasks.tangani_pesan[1f81dcad-5b6c-4a67-99f8-52fb9e86d4f4] succeeded in 0.00038350000249920413s: 'User login'
+[2026-11-10 13:44:45,203: INFO/MainProcess] Task tasks.tangani_pesan[cca3d507-1f4d-4ffb-a868-11890dbec036] received
+[2026-11-10 13:44:45,204: WARNING/MainProcess] [demo@LAPTOP-J20GFRLI] exchange=ex_wildcard routing_key=log.db.error isi='Query timeout'
+[2026-11-10 13:44:45,204: INFO/MainProcess] Task tasks.tangani_pesan[cca3d507-1f4d-4ffb-a868-11890dbec036] succeeded in 0.00031350000062957406s: 'Query timeout'
+[2026-11-10 13:44:45,205: INFO/MainProcess] Task tasks.tangani_pesan[3f74089e-e419-41e0-bb2c-9bbeb311225e] received
+[2026-11-10 13:44:45,205: WARNING/MainProcess] [demo@LAPTOP-J20GFRLI] exchange=ex_wildcard routing_key=log isi='Log tanpa level'
+[2026-11-10 13:44:45,205: INFO/MainProcess] Task tasks.tangani_pesan[3f74089e-e419-41e0-bb2c-9bbeb311225e] succeeded in 0.0002786999975796789s: 'Log tanpa level'
+[2026-11-10 13:44:45,206: INFO/MainProcess] Task tasks.tangani_pesan[4478a396-d263-4925-8335-194cc9b027a6] received
+[2026-11-10 13:44:45,206: WARNING/MainProcess] [demo@LAPTOP-J20GFRLI] exchange=ex_wildcard routing_key=log.error isi='Database down'
+[2026-11-10 13:44:45,206: INFO/MainProcess] Task tasks.tangani_pesan[4478a396-d263-4925-8335-194cc9b027a6] succeeded in 0.00026359999901615083s: 'Database down'
+[2026-11-10 13:44:45,207: INFO/MainProcess] Task tasks.tangani_pesan[8209e81f-c65f-4a03-94d7-2bb6432e9837] received
+[2026-11-10 13:44:45,207: WARNING/MainProcess] [demo@LAPTOP-J20GFRLI] exchange=ex_wildcard routing_key=app.error isi='Crash'
+[2026-11-10 13:44:45,207: INFO/MainProcess] Task tasks.tangani_pesan[8209e81f-c65f-4a03-94d7-2bb6432e9837] succeeded in 0.0002583999958005734s: 'Crash'
+[2026-11-10 13:44:45,208: INFO/MainProcess] demo@LAPTOP-J20GFRLI ready.
+[2026-11-10 13:44:45,208: INFO/MainProcess] Task tasks.tangani_pesan[4478a396-d263-4925-8335-194cc9b027a6] received
+[2026-11-10 13:44:45,209: WARNING/MainProcess] [demo@LAPTOP-J20GFRLI] exchange=ex_wildcard routing_key=log.error isi='Database down'
+[2026-11-10 13:44:45,209: INFO/MainProcess] Task tasks.tangani_pesan[4478a396-d263-4925-8335-194cc9b027a6] succeeded in 0.0002638000005390495s: 'Database down'
+[2026-11-10 13:44:45,209: INFO/MainProcess] Task tasks.tangani_pesan[cca3d507-1f4d-4ffb-a868-11890dbec036] received
+[2026-11-10 13:44:45,210: WARNING/MainProcess] [demo@LAPTOP-J20GFRLI] exchange=ex_wildcard routing_key=log.db.error isi='Query timeout'
+[2026-11-10 13:44:45,210: INFO/MainProcess] Task tasks.tangani_pesan[cca3d507-1f4d-4ffb-a868-11890dbec036] succeeded in 0.00026339999749325216s: 'Query timeout'
+[2026-11-10 13:44:45,210: INFO/MainProcess] Task tasks.tangani_pesan[8209e81f-c65f-4a03-94d7-2bb6432e9837] received
+[2026-11-10 13:44:45,211: WARNING/MainProcess] [demo@LAPTOP-J20GFRLI] exchange=ex_wildcard routing_key=app.error isi='Crash'
+[2026-11-10 13:44:45,211: INFO/MainProcess] Task tasks.tangani_pesan[8209e81f-c65f-4a03-94d7-2bb6432e9837] succeeded in 0.0003435000035096891s: 'Crash'
+
+worker: Hitting Ctrl+C again will initiate cold shutdown, terminating all running tasks!
+
+worker: Warm shutdown (MainProcess)
